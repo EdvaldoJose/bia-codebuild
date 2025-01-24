@@ -1,14 +1,19 @@
-version: 0.1
+version: 0.2
 
 phases:
   install:
-    command:
-    - echo Instaling Node 21 e npm...
-    - curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
-    - apt-get install -y nodejs
+    commands:
+      - echo "Instalando Node.js 21 e npm..."
+      - curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
+      - apt-get install -y nodejs
+  
   build:
     commands:
-    - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
-    - echo Rodando tests uniting...
-    - npm test
-  
+      - echo "Configurando e construindo o projeto React..."
+      - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+      - echo "Executando testes unitários..."
+      - npm test
+
+artifacts:
+  files:
+    - '**/*'
