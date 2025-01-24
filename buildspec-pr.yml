@@ -3,8 +3,10 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Instalando Node.js 21 e npm..."
-      - curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
+      - apt-get update -y
+      - apt-get upgrade -y
+      - echo "Instalando Node.js 20 e npm..."
+      - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
       - apt-get install -y nodejs
   
   build:
