@@ -3,19 +3,24 @@ version: 0.2
 phases:
   install:
     commands:
+      - echo "Atualizando pacotes do sistema..."
       - yum update -y
+      - echo "Instalando o curl e Node.js 20..."
       - yum install -y curl
-      - echo "Instalando Node.js 20 e npm..."
       - curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
       - yum install -y nodejs
+      - echo "Versões instaladas:"
+      - node -v
+      - npm -v
   
   build:
     commands:
-      - echo "Configurando e construindo o projeto React..."
+      - echo "Configurando variáveis de ambiente e construindo o projeto React..."
       - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
       - echo "Executando testes unitários..."
       - npm test
 
 artifacts:
   files:
-    - '**/*'
+    - 'build/**/*'
+    - '!node_modules/**/*'
