@@ -6,7 +6,7 @@ phases:
       - echo "Atualizando repositórios..."
       - yum clean all
       - yum makecache
-      - echo "Instalando Node.js 20 e npm..."
+      - echo "Instalando Node.js v20 e npm..."
       - curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
       - yum install -y nodejs
       - echo "Versões instaladas:"
