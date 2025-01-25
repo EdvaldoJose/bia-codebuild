@@ -22,10 +22,13 @@ phases:
 
   build:
     commands:
+      - echo "Configurando Node.js com opções de compatibilidade..."
+      - export NODE_OPTIONS=--openssl-legacy-provider
       - echo "Instalando dependências no cliente..."
       - npm install --prefix client
-      - echo "Tentando executar o build do React..."
-      - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client || true
+      - echo "Executando build do React..."
+      - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
+
       - echo "Executando testes unitários..."
       - npm test --prefix client
 
