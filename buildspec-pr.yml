@@ -23,7 +23,7 @@ phases:
       - echo "Executando build do React..."
       - REACT_APP_API_URL=http://34.239.240.133 SKIP_PREFLIGHT_CHECK=true npm run build --prefix client
       - echo "Executando testes unitários..."
-      # - npm test -- --runInBand  # Executando os testes de forma sequencial para evitar conflitos
+      - npm test -- --runInBand  # Executando os testes de forma sequencial para evitar conflitos
 
 artifacts:
   files:
