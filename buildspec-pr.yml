@@ -6,14 +6,7 @@ phases:
       - echo "Atualizando repositórios..."
       - yum clean all
       - yum makecache
-      - echo "Verificando se curl está instalado..."
-      # - if ! command -v curl &>/dev/null; then
-      #     echo "Instalando curl...";
-      #     yum install -y curl;
-      #   else
-      #     echo "curl já está instalado.";
-      #   fi
-      - echo "Instalando Node.js 20 e npm..."
+       - echo "Instalando Node.js 20 e npm..."
       - curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
       - yum install -y nodejs
       - echo "Versões instaladas:"
