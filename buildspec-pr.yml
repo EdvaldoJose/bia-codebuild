@@ -5,7 +5,7 @@ phases:
     commands:
       - echo "Atualizando repositórios e verificando pacotes..."
       - yum clean all
-      - yum makecache fast
+      - yum makecache
       - echo "Verificando se curl já está instalado..."
       - if ! command -v curl &>/dev/null; then
           echo "curl não encontrado. Instalando...";
