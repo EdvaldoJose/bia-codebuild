@@ -11,6 +11,8 @@ phases:
       - yum install -y nodejs
       - echo "Versões instaladas:"
       - node -v
+      - npm -v
+      - echo "Instalando dependências no projeto..."
 
   build:
     commands:
