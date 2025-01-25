@@ -3,16 +3,23 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Atualizando pacotes do sistema..."
-      - yum update -y
-      - echo "Instalando o curl e Node.js 20..."
-      - yum install -y curl
+      - echo "Atualizando repositórios e verificando pacotes..."
+      - yum clean all
+      - yum makecache fast
+      - echo "Verificando se curl já está instalado..."
+      - if ! command -v curl &>/dev/null; then
+          echo "curl não encontrado. Instalando...";
+          yum install -y curl;
+        else
+          echo "curl já está instalado.";
+        fi
+      - echo "Instalando Node.js 20 e npm..."
       - curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
       - yum install -y nodejs
       - echo "Versões instaladas:"
       - node -v
       - npm -v
-  
+
   build:
     commands:
       - echo "Configurando variáveis de ambiente e construindo o projeto React..."
