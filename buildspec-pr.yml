@@ -31,6 +31,7 @@ phases:
 
       - echo "Executando testes unitários..."
       # - npm test --prefix client -- --ci --silent
+      - npm test
 
 artifacts:
   files:
